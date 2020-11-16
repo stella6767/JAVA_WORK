@@ -12,14 +12,14 @@ class Cal {// 계산기
 	}
 
 	practice a = new practice();
-	// a.xxx();
+	// a.xxx(); //이건 아예 불가능?
 
 }
 
 public class Method03 {
 	public static void main(String[] args) {
 		practice a = new practice();
-		a.xxx();
+		a.xxx(); //이건 둘다 되네
 
 		practice2 b = new practice2();
 		b.yyy();

@@ -1,6 +1,6 @@
 package ch04;
 
-public class practice{
+public class practice{ //heap에 들어갈 데이터(전역변수)
 	int x =3;
 	int y =5;
 	
