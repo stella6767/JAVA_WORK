@@ -27,14 +27,14 @@ public class Star1App {
 
 	}
 
-	static void attack(DarkTemplot u1, Zealot u2) {
+	static void attack(DarkTempler u1, Zealot u2) {
 		System.out.println(u1.name + " -> " + u2.name + " 공격");
 		u2.hp = u2.hp - u1.attack;// 90
 		System.out.println(u2.name + " 체력: " + u2.hp);
 
 	}
 
-	static void attack(DarkTemplot u1, Dragoon u2) {
+	static void attack(DarkTempler u1, Dragoon u2) {
 		System.out.println(u1.name + " -> " + u2.name + " 공격");
 		u2.hp = u2.hp - u1.attack;// 90
 		System.out.println(u2.name + " 체력: " + u2.hp);
@@ -46,8 +46,8 @@ public class Star1App {
 		Dragoon d1 = new Dragoon("드라군1", 100, 20);// heap 변수는
 		// new로 뜬 string name = 질럿1, hp =100 ,attack = 10 등
 		Dragoon d2 = new Dragoon("드라군2", 100, 20);
-		DarkTemplot da1 = new DarkTemplot("다크템플럿1", 100, 50);
-		DarkTemplot da2 = new DarkTemplot("다크템플럿2", 100, 50);
+		DarkTempler da1 = new DarkTempler("다크템플럿1", 100, 50);
+		DarkTempler da2 = new DarkTempler("다크템플럿2", 100, 50);
 
 		// 1. 질럿1 -> 드라군1 공격
 		attack(z1, d1);

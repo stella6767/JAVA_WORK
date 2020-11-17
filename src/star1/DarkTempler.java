@@ -1,17 +1,19 @@
 package star1;
 
-class Tank extends StarUnit {
+class DarkTempler extends StarUnit{
 	String name;
 	int hp;
 	int attack;
 	
-	public Tank(String name, int hp, int attack) {
-		this.name = name;
-		this.hp = hp;
-		this.attack = attack;
+	public DarkTempler() {
+		// TODO Auto-generated constructor stub
 	}
-
-	public Tank() {}
+	
+	public DarkTempler(String n,int h, int a) {
+		name = n;
+		hp = h;
+		attack = a;
+	}
 
 	public String getName() {
 		return name;
@@ -36,7 +38,6 @@ class Tank extends StarUnit {
 	public void setAttack(int attack) {
 		this.attack = attack;
 	}
-	
 	
 	
 	
