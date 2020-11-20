@@ -1,4 +1,4 @@
-package test;
+package 인터페이스실습;
 
 import ch05.BlueCloth;
 import ch05.Factory;
