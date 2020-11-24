@@ -66,7 +66,6 @@ public class Response {
 		String error_count = r3[3].split(":")[1];
 		System.out.println(error_count);
 		
-		
 		Response res= new Response(group_id,eroor_list,success_count,error_count);
 		
 		System.out.println(res);
