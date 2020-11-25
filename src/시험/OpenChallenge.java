@@ -52,20 +52,6 @@ public class OpenChallenge extends JFrame {
 		la1.setFont(new Font("ItalicT", Font.BOLD, 38));
 		la1.setForeground(Color.YELLOW);
 		la1.setBounds(58, 49, 63, 57);		
-//		la1.addKeyListener(new KeyAdapter() {
-//			Integer i = (int)Math.random()*4;
-//			@Override
-//			public void keyPressed(KeyEvent e) {
-//				
-//				//System.out.println(e.getKeyCode());
-//				//if (e.getKeyCode()==10) {
-//					//la1.setText(i.toString());	
-//				}
-//				
-//				
-//			}
-//		});
-		
 
 		la2.setVerticalAlignment(SwingConstants.BOTTOM);
 		la2.setBackground(Color.MAGENTA);
@@ -95,10 +81,23 @@ public class OpenChallenge extends JFrame {
 				
 				if(e.getKeyCode()==10) {
 					Random r = new Random();//MAth.random은 안되나보다.
-					int i = r.nextInt(4)+1;
+					int i = r.nextInt(4);
+					int a = r.nextInt(4);
+					int b = r.nextInt(4);
 					
-					System.out.println(i);
 					la1.setText(i+"");	
+					la2.setText(a+"");
+					la3.setText(b+"");
+					
+					if(la1.getText().equals(la2.getText())&&la2.getText().equals(la3.getText())) 
+						la4.setText("축하합니다!!");
+						else if(!(la1.getText().equals(la2.getText())&&la2.getText().equals(la3.getText())))  
+							la4.setText("아쉽군요");
+					
+					
+					
+					
+					
 				}
 			}
 			
