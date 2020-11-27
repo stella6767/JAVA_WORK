@@ -20,20 +20,21 @@ import java.awt.font.ImageGraphicAttribute;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class OpenChallenge02 extends JFrame {
+public class OpenChallenge03 extends JFrame {
 	
 	private CardLayout card;
 	private JPanel slide; //cardlayout
-	private JPanel pa1,pa2,pa3,pa4,imgpa,test;
+	private JPanel pa1,pa2,pa3,pa4,btnpa;
+	private MyImgPanel
+
 	private BufferedImage img;
 	private JButton btn1,btn2;
 	private ImageIcon img1,img2,img3,img4;
-	private JLabel la1,la2,la3,la4;
 	private Container c;
-	private Image img10;
+
 	
 	
-	public OpenChallenge02() {
+	public OpenChallenge03() {
 		initObject();
 		
 		initSetting();
@@ -48,30 +49,14 @@ public class OpenChallenge02 extends JFrame {
 		img3 = new ImageIcon("D://download/14.jpg");
 		img4 = new ImageIcon("D://download/15.jpg");
 		
-		
-		
-		la1 = new JLabel(img1);
-		la2 = new JLabel(img2);
-		la3 = new JLabel(img3);
-		la4 = new JLabel(img4);
-		
 		slide = new JPanel();
 		
 		pa1 = new JPanel();
 		pa2 = new JPanel();
 		pa3 = new JPanel();	
 		pa4 = new JPanel();
-		imgpa = new JPanel();
-		
-		test = new JPanel() {
-			Image background = new ImageIcon("D://download/4.jpg").getImage();
-				
-			@Override
-			public void paintComponents(Graphics g) {
-				g.drawImage(background,0,0,null);
-			}
-		};
-		
+		btnpa = new JPanel();
+			
 		
 		btn1 = new JButton("<");
 		btn2 = new JButton(">");
@@ -90,14 +75,9 @@ public class OpenChallenge02 extends JFrame {
 		setSize(800, 800);
 		c = getContentPane();
 		
-		slide.setLayout(card); //상위 컨테이너에 card layout 설정
+		slide.setLayout(card);
 		
-//		pa1.setLayout(card);  //이렇게 하면 안 된다!!
-//		pa2.setLayout(card);
-//		pa3.setLayout(card);
-//		pa4.setLayout(card);
 		
-	
 		btn1.addActionListener(new ActionListener() {
 			
 			@Override
@@ -125,27 +105,42 @@ public class OpenChallenge02 extends JFrame {
 	}
 	
 
+	
+	class MyImgPanel extends JPanel{
+		private ImageIcon icon = new ImageIcon();
+		private Image img = icon.getImage();
+		
+		@Override
+		public void paintComponents(Graphics g) {
+			super.paintComponents(g);
+			
+			//이미지를 패널 크기로 조절하여 그린다.
+			g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+			
+		}
+		
+		
+	}
+	
+	
+	
 	private void initBatch() {
 		c.add(slide,BorderLayout.CENTER);	
-		c.add(imgpa,BorderLayout.SOUTH);
-		
+		c.add(btnpa,BorderLayout.SOUTH);
+			
 		slide.add(pa1,"1");
 		slide.add(pa2,"2");
 		slide.add(pa3,"3");
 		slide.add(pa4,"4");
 		
-		pa1.add(la1);
-		pa2.add(la2);
-		pa3.add(la3);
-		pa4.add(la4);
-		
-		imgpa.add(btn1);
-		imgpa.add(btn2);
+
+		btnpa.add(btn1);
+		btnpa.add(btn2);
 
 	}
 	
 	
 	public static void main(String[] args) {
-		new OpenChallenge02();
+		new OpenChallenge03();
 	}
 }
