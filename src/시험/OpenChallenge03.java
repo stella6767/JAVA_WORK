@@ -20,14 +20,13 @@ import java.awt.font.ImageGraphicAttribute;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class OpenChallenge03 extends JFrame {
+public class OpenChallenge03 extends JFrame { //paintComponent  s!!!!!! 가 아니다. 삽질하지 말 것!!
 	
 	private CardLayout card;
 	private JPanel slide; //cardlayout
-	private JPanel pa1,pa2,pa3,pa4,btnpa;
-	private MyImgPanel
+	private JPanel btnpa,pa2,pa3,pa4;
+	private MyImgPanel mpa1;
 
-	private BufferedImage img;
 	private JButton btn1,btn2;
 	private ImageIcon img1,img2,img3,img4;
 	private Container c;
@@ -51,12 +50,10 @@ public class OpenChallenge03 extends JFrame {
 		
 		slide = new JPanel();
 		
-		pa1 = new JPanel();
-		pa2 = new JPanel();
-		pa3 = new JPanel();	
-		pa4 = new JPanel();
+	
 		btnpa = new JPanel();
-			
+		mpa1 = new MyImgPanel();
+		
 		
 		btn1 = new JButton("<");
 		btn2 = new JButton(">");
@@ -65,7 +62,35 @@ public class OpenChallenge03 extends JFrame {
 		
 		c= new Container();
 		
-
+		
+		pa2 = new JPanel() {
+			Image background = new ImageIcon("D://download/4.jpg").getImage();
+				
+			@Override
+			public void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(background, 0, 0, this.getWidth(), this.getHeight(), this);
+			}
+		};
+		
+		pa3 = new JPanel() {
+			Image background = new ImageIcon("D://download/5.jpg").getImage();
+				
+			@Override
+			public void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(background, 0, 0, this.getWidth(), this.getHeight(), this);
+			}
+		};
+		pa4 = new JPanel() {
+			Image background = new ImageIcon("D://download/6.jpg").getImage();
+				
+			@Override
+			public void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(background, 0, 0, this.getWidth(), this.getHeight(), this);
+			}
+		};
 	}
 
 	
@@ -99,48 +124,51 @@ public class OpenChallenge03 extends JFrame {
 		
 		
 		
-		setVisible(true);
 		
+		setVisible(true);	
 		card.show(slide, "1");
 	}
 	
 
-	
-	class MyImgPanel extends JPanel{
-		private ImageIcon icon = new ImageIcon();
-		private Image img = icon.getImage();
-		
-		@Override
-		public void paintComponents(Graphics g) {
-			super.paintComponents(g);
-			
-			//이미지를 패널 크기로 조절하여 그린다.
-			g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
-			
-		}
-		
-		
-	}
 	
 	
 	
 	private void initBatch() {
 		c.add(slide,BorderLayout.CENTER);	
 		c.add(btnpa,BorderLayout.SOUTH);
-			
-		slide.add(pa1,"1");
+		
+		slide.add(mpa1,"1");
 		slide.add(pa2,"2");
 		slide.add(pa3,"3");
 		slide.add(pa4,"4");
-		
 
 		btnpa.add(btn1);
 		btnpa.add(btn2);
 
 	}
 	
+	class MyImgPanel extends JPanel{
+		private ImageIcon icon = new ImageIcon("D://download/12.jpg");
+		private Image img = icon.getImage();
+		
+		public MyImgPanel() {
+			
+		}
+		
+		@Override
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			
+			//이미지를 패널 크기로 조절하여 그린다.
+			g.drawImage(img, 0, 0, this.getWidth(), this.getHeight(), this);
+			//g.setColor(Color.BLUE);
+		}
+		
+		
+	}
 	
 	public static void main(String[] args) {
 		new OpenChallenge03();
 	}
 }
+
