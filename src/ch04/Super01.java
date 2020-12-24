@@ -7,6 +7,8 @@ class Car{
 	public Car() {
 		System.out.println("자동차");
 	}
+	
+	public void move() {};
 }
 
 
@@ -15,6 +17,10 @@ class Sonata extends Car{
 		super();
 		System.out.println(super.desc);//함수도 super 가능? 오버라이딩 무시?
 		System.out.println("소나타");
+	}
+	
+	public void move() {
+		super.move();
 	}
 }
 

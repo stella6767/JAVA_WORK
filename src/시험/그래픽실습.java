@@ -1,4 +1,4 @@
-package ch12;
+package 시험;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -27,10 +27,13 @@ public class 그래픽실습 extends JFrame {
 
 	class GrapPanel extends JPanel {
 
-		@Override
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
+		boolean click = false;
 
+
+		
+		@Override
+		public void paint(Graphics g) {
+			super.paintComponent(g);
 			for (int cnt = 0; cnt < 11; cnt++) {
 				g.drawString(cnt * 10 + "", 25, 255 - 20 * cnt);
 				g.drawLine(50, 250 - 20 * cnt, 350, 250 - 20 * cnt);
@@ -43,20 +46,20 @@ public class 그래픽실습 extends JFrame {
 			g.drawString("3", 250, 270);
 			g.drawString("4", 300, 270);
 
-			try {
+			if (click == true) {
 				g.fillRect(100, 50, 10, 200);
-				Thread.sleep(1000);
 				g.fillRect(150, 70, 10, 180);
 				g.fillRect(200, 120, 10, 130);
 				g.fillRect(250, 90, 10, 160);
 				g.fillRect(300, 190, 10, 60);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block panel.paintco(g) btn 함수에
-				e.printStackTrace();
 			}
+		}
 
-		
-
+		void setclick() {
+//			if(click==false)click = true;
+//			else click =false;
+			click = !click;
+			
 		}
 
 	}
@@ -74,38 +77,22 @@ public class 그래픽실습 extends JFrame {
 		setSize(400, 400);
 		c = getContentPane();
 
-		// grpa.setVisible(false);
-
 		btn1.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-//				if (grpa.isVisible())
-//					grpa.setVisible(false);
-//				else
-//					grpa.setVisible(true);
 				
-				
-				for (int i = 0; i < 5; i++) {
-					grpa.paintComponent(g){
-						try {
-							g.fillRect(100, 50, 10, 200);
-							Thread.sleep(1000);
-							g.fillRect(150, 70, 10, 180);
-							g.fillRect(200, 120, 10, 130);
-							g.fillRect(250, 90, 10, 160);
-							g.fillRect(300, 190, 10, 60);
-						} catch (Exception e) {
-							// TODO Auto-generated catch block panel.paintco(g) btn 함수에
-							e.printStackTrace();
-						}
+//			if (grpa.isVisible())
+//				grpa.setVisible(false);
+//			else
+//				grpa.setVisible(true);
+//			
 
-						
-						
-					};
-				}
+//				c.add(grpa, BorderLayout.CENTER);
+//				
+				grpa.setclick();
+				grpa.repaint(); //잔상이 생기는 이유는 super.paintComponent(g); 이 없기 때문!!!!
 
-				
 			}
 		});
 
@@ -120,9 +107,6 @@ public class 그래픽실습 extends JFrame {
 		btnpa.add(btn1);
 	}
 
-
-	
-	
 	public static void main(String[] args) {
 
 		new 그래픽실습();
